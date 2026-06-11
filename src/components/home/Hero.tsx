@@ -1,19 +1,24 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import Link from "next/link";
 import { heroData } from "@/lib/data/homepage";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 
-const FADE_UP = {
-  hidden: { opacity: 0, y: 16 },
-  visible: (delay: number) => ({
+const FADE_UP: Variants = {
+  hidden: {
+    opacity: 0,
+    y: 16,
+  },
+  visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1], delay },
-  }),
+    transition: {
+      duration: 0.55,
+      ease: "easeOut",
+    },
+  },
 };
-
 export function Hero() {
   return (
     <section
@@ -34,13 +39,12 @@ export function Hero() {
 
       <div className="relative max-w-5xl mx-auto w-full">
         {/* Availability pill */}
-        <motion.div
-          custom={0}
-          variants={FADE_UP}
-          initial="hidden"
-          animate="visible"
-          className="mb-8"
-        >
+     <motion.div
+  variants={FADE_UP}
+  initial="hidden"
+  animate="visible"
+  className="mb-8"
+>
           <SectionLabel>
             <span className="inline-block w-1.5 h-1.5 rounded-full bg-emerald-400 mr-2 align-middle" />
             {heroData.label}
@@ -48,11 +52,10 @@ export function Hero() {
         </motion.div>
 
         {/* Main headline */}
-        <motion.div
-          custom={0.08}
-          variants={FADE_UP}
-          initial="hidden"
-          animate="visible"
+              <motion.div
+               variants={FADE_UP}
+            initial="hidden"
+            animate="visible"
           className="mb-6"
         >
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-white leading-[1.08]">
@@ -63,35 +66,36 @@ export function Hero() {
         </motion.div>
 
         {/* Statement */}
-        <motion.p
-          custom={0.16}
-          variants={FADE_UP}
-          initial="hidden"
-          animate="visible"
-          className="text-lg sm:text-xl md:text-2xl text-white/80 font-normal max-w-2xl leading-relaxed mb-4"
-        >
+       <motion.p
+  variants={FADE_UP}
+  initial="hidden"
+  animate="visible"
+  transition={{ delay: 0.16 }}
+  className="text-lg sm:text-xl md:text-2xl text-white/80 font-normal max-w-2xl leading-relaxed mb-4"
+>
+
           {heroData.statement}
         </motion.p>
 
         {/* Tagline */}
         <motion.p
-          custom={0.22}
-          variants={FADE_UP}
-          initial="hidden"
-          animate="visible"
-          className="text-sm sm:text-base text-white/40 max-w-xl leading-relaxed mb-10"
-        >
+  variants={FADE_UP}
+  initial="hidden"
+  animate="visible"
+  transition={{ delay: 0.22 }}
+  className="text-sm sm:text-base text-white/40 max-w-xl leading-relaxed mb-10"
+>
           {heroData.tagline}
         </motion.p>
 
         {/* CTAs */}
-        <motion.div
-          custom={0.3}
-          variants={FADE_UP}
-          initial="hidden"
-          animate="visible"
-          className="flex flex-wrap items-center gap-3"
-        >
+       <motion.div
+  variants={FADE_UP}
+  initial="hidden"
+  animate="visible"
+  transition={{ delay: 0.3 }}
+  className="flex flex-wrap items-center gap-3"
+>
           <Link
             href={heroData.cta.primary.href}
             className="inline-flex items-center gap-2 bg-white text-black text-sm font-medium px-5 py-2.5 rounded-sm hover:bg-white/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C5A880] focus-visible:ring-offset-2 focus-visible:ring-offset-black"
@@ -121,14 +125,14 @@ export function Hero() {
       </div>
 
       {/* Bottom scroll indicator */}
-      <motion.div
-        custom={0.45}
-        variants={FADE_UP}
-        initial="hidden"
-        animate="visible"
-        aria-hidden="true"
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5"
-      >
+   <motion.div
+  variants={FADE_UP}
+  initial="hidden"
+  animate="visible"
+  transition={{ delay: 0.45 }}
+  aria-hidden="true"
+  className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5"
+>
         <div className="w-px h-8 bg-gradient-to-b from-white/20 to-transparent" />
         <span className="text-[10px] tracking-widest uppercase text-white/20">scroll</span>
       </motion.div>
