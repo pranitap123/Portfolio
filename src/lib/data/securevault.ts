@@ -1,6 +1,8 @@
-export const meta = {
+export const heroData = {
   title: "SecureVault Backend",
   subtitle: "Encrypted Secret Management Platform",
+  description:
+  "Production-grade encrypted secrets management platform with AES-256-GCM encryption, JWT authentication, PostgreSQL, Prisma, and Docker.",
   github: "https://github.com/pranitap123/securevault-backend",
   categories: ["Security Engineering", "Backend Systems", "Infrastructure"],
   tech: ["Node.js", "TypeScript", "PostgreSQL", "Prisma", "Docker", "JWT", "AES-256", "Zod"],
@@ -213,7 +215,7 @@ export const challenges = [
   },
   {
     title: "Schema Evolution Under Encryption",
-    description: `Adding a column to an unencrypted table is a migration. Adding a column to a secrets table with live encrypted data requires coordination: the migration must not decrypt and re-encrypt all records in a single transaction due to lock contention, and any change affecting the encryption model requires a rotation of existing secrets. The version column was introduced specifically to support this without a separate audit table.`,
+    description: `Adding a column to an unencrypted table is a migratifon. Adding a column to a secrets table with live encrypted data requires coordination: the migration must not decrypt and re-encrypt all records in a single transaction due to lock contention, and any change affecting the encryption model requires a rotation of existing secrets. The version column was introduced specifically to support this without a separate audit table.`,
   },
   {
     title: "Docker Service Readiness",
