@@ -71,6 +71,25 @@ export const architectureLayers = [
   { label: "PostgreSQL", tech: "Relational Store", type: "db", description: "Users, secrets, namespaces, permissions, audit log" },
 ] as const;
 
+export const architectureData = {
+  description:
+    "SecureVault follows a layered architecture where every request flows through validation, authentication, business logic, encryption, and persistence before reaching PostgreSQL.",
+
+  layers: architectureLayers.map((layer) => ({
+    id: layer.type,
+    label: layer.label,
+    sublabel: layer.tech,
+    color:
+      layer.type === "auth" || layer.type === "encryption"
+        ? "rgba(197,168,128,0.08)"
+        : "rgba(255,255,255,0.03)",
+    border:
+      layer.type === "auth" || layer.type === "encryption"
+        ? "rgba(197,168,128,0.25)"
+        : "rgba(255,255,255,0.08)",
+  })),
+} as const;
+
 export const authFlow = {
   description: `JWT was selected for its statelessness property — a critical requirement for horizontal scalability. Any instance of the API can validate any token without consulting a shared session store. The trade-off is token revocation: JWTs are valid until expiry, which is mitigated here through short expiry windows (15 minutes) and a refresh token rotation strategy backed by a token family table in PostgreSQL.`,
   whyJWT: [
