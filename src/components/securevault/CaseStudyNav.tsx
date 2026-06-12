@@ -1,15 +1,15 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { navSections } from "@/lib/data/securevault";
+import { sections } from "@/lib/data/securevault";
 
 export function CaseStudyNav() {
-  const [activeId, setActiveId] = useState<string>(navSections[0].id);
+  const [activeId, setActiveId] = useState<string>(sections[0].id);
 
   useEffect(() => {
     const observers: IntersectionObserver[] = [];
 
-    navSections.forEach(({ id }) => {
+    sections.forEach(({ id }) => {
       const el = document.getElementById(id);
       if (!el) return;
 
@@ -45,7 +45,7 @@ export function CaseStudyNav() {
         </p>
         <nav>
           <ul className="space-y-0.5" role="list">
-            {navSections.map(({ id, label }) => {
+            {sections.map(({ id, label }) => {
               const isActive = activeId === id;
               return (
                 <li key={id}>
