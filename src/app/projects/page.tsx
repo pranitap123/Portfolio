@@ -1,177 +1,124 @@
-export type ProjectCategory =
-  | "Backend Engineering"
-  | "Cybersecurity & Distributed Systems"
-  | "AI-Powered SaaS Platform";
+import type { Metadata } from "next";
+import { projects } from "@/lib/data/projects";
+import { ProjectsHero } from "@/components/projects/ProjectsHero";
+import { ProjectCard } from "@/components/projects/ProjectCard";
+import { ComparisonTable } from "@/components/projects/ComparisonTable";
+import { EngineeringDecisions } from "@/components/projects/EngineeringDecisions";
+import Link from "next/link";
 
-export interface ProjectHighlight {
-  label: string;
-  detail: string;
+export const metadata: Metadata = {
+  title: "Projects — Pranita Panchal",
+  description:
+    "Production-oriented engineering projects: SecureVault (encrypted secrets API), ARGUS-PRISM (Kafka threat intelligence platform), and Jurisynth AI (legal SaaS). Backend, distributed systems, and infrastructure.",
+  openGraph: {
+    title: "Engineering Projects — Pranita Panchal",
+    description:
+      "Backend engineering, distributed systems, and AI-powered SaaS projects built to production standard.",
+  },
+};
+
+export default function ProjectsPage() {
+  return (
+    <>
+      <Nav />
+      {/* Added pt-14 (padding-top: 3.5rem / 56px) to offset the fixed header height */}
+      <main id="main-content" className="pt-14 bg-[#080808] min-h-screen text-white">
+        <ProjectsHero />
+
+        {/* Project cards — full-width, stacked */}
+        <div role="feed" aria-label="Engineering projects">
+          {projects.map((project, index) => (
+            <ProjectCard key={project.slug} project={project} index={index} />
+          ))}
+        </div>
+
+        <ComparisonTable />
+        <EngineeringDecisions />
+        <PageFooter />
+      </main>
+    </>
+  );
 }
 
-export interface Project {
-  slug: string;
-  name: string;
-  subtitle: string;
-  description: string;
-  category: ProjectCategory;
-  status: "In Development" | "Live" | "Open Source";
-  github: string;
-  live?: string;
-  tech: string[];
-  highlights: ProjectHighlight[];
-  architecture: {
-    summary: string;
-    layers: string[];
-  };
-  diagramType: "securevault" | "argus" | "jurisynth";
-  metrics: { label: string; value: string }[];
+// ─── Shared Nav (matches homepage) ──────────────────────────────────────────
+
+function Nav() {
+  return (
+    <header className="fixed top-0 left-0 right-0 z-50 h-14 border-b border-white/[0.06] bg-[#080808]/80 backdrop-blur-md">
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-[#C5A880] focus:text-black focus:text-sm focus:font-medium focus:rounded-sm"
+      >
+        Skip to main content
+      </a>
+
+      <div className="max-w-5xl mx-auto h-full px-6 md:px-12 lg:px-20 flex items-center justify-between">
+        <Link
+          href="/"
+          className="text-sm font-semibold text-white tracking-tight hover:text-white/80 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C5A880] rounded-sm"
+        >
+          Pranita Panchal
+        </Link>
+
+        <nav aria-label="Main navigation">
+          <ul className="flex items-center gap-6 list-none m-0 p-0">
+            <li>
+              <Link
+                href="/projects"
+                aria-current="page"
+                className="text-sm text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C5A880] rounded-sm"
+              >
+                Projects
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/engineering"
+                className="text-sm text-white/50 hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C5A880] rounded-sm"
+              >
+                Engineering
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/resume"
+                className="text-sm text-white/50 hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C5A880] rounded-sm"
+              >
+                Resume
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/contact"
+                className="text-sm font-medium text-black bg-white px-4 py-1.5 rounded-sm hover:bg-white/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C5A880] focus-visible:ring-offset-2 focus-visible:ring-offset-black"
+              >
+                Contact
+              </Link>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+  );
 }
 
-export const projects: Project[] = [
-  {
-    slug: "securevault-backend",
-    name: "SecureVault",
-    subtitle: "Encrypted secrets management backend",
-    description:
-      "A production-grade REST API for managing encrypted credentials and application secrets. Built with a defense-in-depth approach: AES-256-GCM encryption at rest, JWT-based authentication with refresh token rotation, role-based access control, and structured audit logging. Containerized with Docker and designed for horizontal scalability.",
-    category: "Backend Engineering",
-    status: "Open Source",
-    github: "https://github.com/pranitap123/securevault-backend",
-    tech: ["TypeScript", "Node.js", "PostgreSQL", "Prisma", "Docker", "JWT", "AES-256"],
-    highlights: [
-      { label: "Encryption", detail: "AES-256-GCM at rest, per-secret key derivation" },
-      { label: "Auth", detail: "JWT with refresh token rotation and revocation" },
-      { label: "Access Control", detail: "Role-based permissions with scope isolation" },
-      { label: "Deployment", detail: "Dockerized with multi-stage build and health checks" },
-      { label: "Data Layer", detail: "PostgreSQL + Prisma ORM with migration history" },
-    ],
-    architecture: {
-      summary: "Three-tier REST architecture with encryption middleware between API and persistence layers",
-      layers: ["HTTP Layer", "Auth Middleware", "Encryption Layer", "Prisma ORM", "PostgreSQL"],
-    },
-    diagramType: "securevault",
-    metrics: [
-      { label: "Encryption", value: "AES-256" },
-      { label: "Auth", value: "JWT + Refresh" },
-      { label: "DB", value: "PostgreSQL" },
-      { label: "Deploy", value: "Docker" },
-    ],
-  },
-  {
-    slug: "argus-prism",
-    name: "ARGUS-PRISM",
-    subtitle: "Real-time threat intelligence platform",
-    description:
-      "An event-driven threat detection and intelligence system built for high-throughput security telemetry. Apache Kafka decouples event ingestion from analysis; Neo4j models threat actor relationships and attack patterns as a graph; FastAPI serves the intelligence query layer. The entire stack is containerized and orchestrated via Docker Compose with isolated network segments.",
-    category: "Cybersecurity & Distributed Systems",
-    status: "Open Source",
-    github: "https://github.com/pranitap123/ARGUS---PRISM",
-    tech: ["FastAPI", "Kafka", "Neo4j", "PostgreSQL", "Docker", "React", "Python"],
-    highlights: [
-      { label: "Event Pipeline", detail: "Kafka topics with consumer group partitioning" },
-      { label: "Graph Database", detail: "Neo4j for threat actor relationship modeling" },
-      { label: "API Layer", detail: "FastAPI with async handlers and Pydantic validation" },
-      { label: "Architecture", detail: "Event-driven, decoupled producers and consumers" },
-      { label: "Containerization", detail: "Multi-service Docker Compose with network isolation" },
-    ],
-    architecture: {
-      summary: "Event-driven pipeline: ingestion → Kafka → stream processing → Neo4j graph analysis",
-      layers: ["Event Producers", "Kafka Broker", "Stream Processor", "Neo4j Graph", "FastAPI Query Layer"],
-    },
-    diagramType: "argus",
-    metrics: [
-      { label: "Broker", value: "Kafka" },
-      { label: "Graph DB", value: "Neo4j" },
-      { label: "API", value: "FastAPI" },
-      { label: "Pattern", value: "Event-Driven" },
-    ],
-  },
-  {
-    slug: "jurisynth-ai",
-    name: "Jurisynth AI",
-    subtitle: "AI-powered legal research platform",
-    description:
-      "A deployed SaaS application providing AI-assisted legal document analysis and research. Node.js/Express backend with MongoDB document store, JWT session management, and React frontend. The AI pipeline ingests legal documents, extracts structured metadata, and generates research summaries. Shipped to production at jurisynth.in.",
-    category: "AI-Powered SaaS Platform",
-    status: "Live",
-    github: "https://github.com/pranitap123/Jurisynth-AI",
-    live: "https://jurisynth.in",
-    tech: ["Node.js", "Express", "MongoDB", "React", "JWT", "AI/LLM"],
-    highlights: [
-      { label: "AI Pipeline", detail: "Document ingestion, extraction, and summarization" },
-      { label: "Auth", detail: "JWT sessions with role-based document access" },
-      { label: "Document Store", detail: "MongoDB with schema validation and indexing" },
-      { label: "Production", detail: "Deployed and live at jurisynth.in" },
-      { label: "Full Stack", detail: "Express API + React SPA with shared auth context" },
-    ],
-    architecture: {
-      summary: "Full-stack SaaS: React SPA → Express API → AI pipeline → MongoDB document store",
-      layers: ["React SPA", "Express API", "AI Processing", "MongoDB", "Production Deployment"],
-    },
-    diagramType: "jurisynth",
-    metrics: [
-      { label: "Status", value: "Live" },
-      { label: "DB", value: "MongoDB" },
-      { label: "API", value: "Express" },
-      { label: "AI", value: "LLM Pipeline" },
-    ],
-  },
-];
+// ─── Page footer ─────────────────────────────────────────────────────────────
 
-export const comparisonData = {
-  columns: ["Project", "Primary Focus", "Database", "Deployment", "Authentication", "Architecture Style"],
-  rows: [
-    {
-      project: "SecureVault",
-      focus: "Backend Security",
-      database: "PostgreSQL",
-      deployment: "Docker",
-      auth: "JWT + Refresh Tokens",
-      architecture: "REST / Layered",
-    },
-    {
-      project: "ARGUS-PRISM",
-      focus: "Threat Intelligence",
-      database: "Neo4j + PostgreSQL",
-      deployment: "Docker Compose",
-      auth: "Service Auth",
-      architecture: "Event-Driven",
-    },
-    {
-      project: "Jurisynth AI",
-      focus: "AI SaaS",
-      database: "MongoDB",
-      deployment: "Production VPS",
-      auth: "JWT Sessions",
-      architecture: "MVC / Full Stack",
-    },
-  ],
-} as const;
-
-export const engineeringDecisions = [
-  {
-    title: "Security First",
-    principle: "Encryption and access control are not features — they are constraints applied before the first line of business logic.",
-    implementation: "AES-256-GCM at the persistence boundary, JWT rotation preventing token reuse, RBAC enforced at the middleware layer before handlers are reached.",
-  },
-  {
-    title: "Design for Failure",
-    principle: "Every distributed component will fail. The question is whether the system degrades gracefully or collapses entirely.",
-    implementation: "Kafka decouples producers from consumers in ARGUS-PRISM, ensuring telemetry ingestion continues even if the analysis layer is slow or down.",
-  },
-  {
-    title: "Containerization as Infrastructure",
-    principle: "A system that only runs on one machine is not production-ready. Docker is the minimum deployable unit.",
-    implementation: "Multi-stage Dockerfiles to minimize image surface area, Docker Compose for local environment parity, health checks on every service boundary.",
-  },
-  {
-    title: "Observability Over Debugging",
-    principle: "Structured logs are not nice-to-have. A system you cannot inspect is a system you cannot trust in production.",
-    implementation: "Structured JSON logging with request correlation IDs, database query timing, and authentication event auditing across all three projects.",
-  },
-  {
-    title: "Schema as Contract",
-    principle: "The database schema is the most durable part of a system. Migrations must be reversible, versioned, and reviewed like code.",
-    implementation: "Prisma migration history in SecureVault, Pydantic validation at API boundaries in ARGUS-PRISM, MongoDB schema validation in Jurisynth.",
-  },
-] as const;
+function PageFooter() {
+  return (
+    <footer className="py-16 px-6 md:px-12 lg:px-20 border-t border-white/[0.04] mt-20">
+      <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div>
+          <p className="text-sm text-white/40 mb-1">All projects are independently designed and built.</p>
+          <p className="text-xs text-white/20 font-mono">Architecture, implementation, and deployment by Pranita Panchal.</p>
+        </div>
+        <Link
+          href="/"
+          className="inline-flex items-center gap-2 text-sm text-white/35 border border-white/[0.08] px-5 py-2.5 rounded-sm hover:border-white/20 hover:text-white/60 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C5A880] focus-visible:ring-offset-2 focus-visible:ring-offset-black"
+        >
+          ← Back to homepage
+        </Link>
+      </div>
+    </footer>
+  );
+}
