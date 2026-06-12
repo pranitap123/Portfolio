@@ -1,13 +1,13 @@
 import { Section, Prose } from "./Section";
-import { missionData } from "@/lib/data/securevault";
+import { mission } from "@/lib/data/securevault";
 
 export function TheMission() {
   return (
     <Section id="mission" eyebrow="Context" heading="The Mission">
-      <Prose className="mb-8">{missionData.problem}</Prose>
+      <Prose className="mb-8">{mission.problem}</Prose>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/[0.06] rounded-sm overflow-hidden">
-        {missionData.requirements.map((req) => (
+        {mission.requirements.map((req) => (
           <div key={req.category} className="bg-[#080808] p-6">
             <h3 className="text-xs font-mono font-semibold text-[#C5A880]/80 uppercase tracking-widest mb-4">
               {req.category}
