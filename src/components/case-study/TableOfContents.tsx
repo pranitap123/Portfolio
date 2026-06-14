@@ -4,12 +4,11 @@ import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 
 interface TableOfContentsProps {
-  sections: {
+  sections: ReadonlyArray<{
     id: string;
     label: string;
-  }[];
+  }>;
 }
-
 export function TableOfContents({ sections }: TableOfContentsProps) {
   const [active, setActive] = useState<string>(
     sections[0]?.id ?? ""
