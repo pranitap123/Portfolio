@@ -14,6 +14,8 @@ export const heroData = {
   ],
 } as const;
 
+export const meta = heroData;
+
 export const sections = [
   { id: "mission", label: "The Mission" },
   { id: "architecture", label: "Architecture" },
