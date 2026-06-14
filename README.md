@@ -12,12 +12,12 @@
 This portfolio is not a static template; it is designed as an interactive product platform to demonstrate full-stack engineering capability, systems documentation, and infrastructure topology.
 
 ```text
-       ┌────────────────────────────────────────────────────────┐
-       │                 EDGE / USER INTERACTION                │
-       │       Next.js App Router  │  TailwindCSS Grid          │
-       └───────────────┬────────────────────────┬───────────────┘
-                       │                        │
-                       ▼                        ▼
+        ┌────────────────────────────────────────────────────────┐
+        │                 EDGE / USER INTERACTION                │
+        │       Next.js App Router  │  TailwindCSS Grid          │
+        └───────────────┬────────────────────────┬───────────────┘
+                        │                        │
+                        ▼                        ▼
         ┌─────────────────────────────┐  ┌─────────────────────────────┐
         │       OMNIPRESENT Core      │  │      THREE.JS PLATFORM      │
         │  Ctrl+K Command Palette AI  │  │ Interactive Network Topology│
@@ -34,9 +34,6 @@ This portfolio is not a static template; it is designed as an interactive produc
         │                     EXTERNAL DATA                      │
         │    system-design-engineering Repo (Upstream Source)   │
         └────────────────────────────────────────────────────────┘
-
-        
----
 
 ## 🛠️ Core Technology Stack
 
