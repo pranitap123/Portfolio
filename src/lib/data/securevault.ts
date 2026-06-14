@@ -166,7 +166,7 @@ export const schemaDesign = {
   ],
 } as const;
 
-export const encryptionModel = {
+export const encryptionData = {
   algorithm: "AES-256-GCM",
   description: `AES-256-GCM (Galois/Counter Mode) was selected over AES-256-CBC for a critical reason: GCM is an authenticated encryption mode. It produces a message authentication tag alongside the ciphertext, which means any tampering with the stored ciphertext is detectable at decryption time. CBC only provides confidentiality — an attacker who modifies a CBC-encrypted value may not be detected.\n\nEvery secret follows the same lifecycle: generate a cryptographically random 96-bit initialization vector, encrypt the plaintext using the IV and a key derived from the master secret, store the ciphertext and IV in the database. On retrieval, the process reverses. The plaintext never touches the database.`,
   keyManagement: `The current implementation uses a master encryption key sourced from environment variables and never committed to version control. A production hardening step would replace this with a proper KMS (AWS KMS, HashiCorp Vault) so that key rotation and access auditing are handled outside the application boundary.`,
