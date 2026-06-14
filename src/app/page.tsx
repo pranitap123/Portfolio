@@ -15,6 +15,7 @@ import {
   challenges,
   lessonsLearned,
   futureImprovements,
+  sections,
 } from "@/lib/data/securevault";
 
 export const metadata: Metadata = {
@@ -42,7 +43,7 @@ export default function SecureVaultPage() {
             {/* Sticky TOC — xl only */}
             <aside className="hidden xl:block">
               <div className="px-6 md:px-0 lg:pl-20 xl:pl-20 pt-16">
-                <TableOfContents />
+                <TableOfContents sections={sections} />
               </div>
             </aside>
 

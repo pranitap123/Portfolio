@@ -46,7 +46,6 @@ export default function SecureVaultPage() {
                 <TableOfContents sections={sections} />
               </div>
             </aside>
-
             {/* Main content column */}
             <div className="min-w-0">
 
