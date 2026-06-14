@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CaseStudyHero } from "@/components/case-study/CaseStudyHero";
-import { SectionBlock, Prose } from "@/components/case-study/Section";
+import { SectionBlock, Prose } from "@/components/case-study/SectionBlock";
 import { TableOfContents } from "@/components/case-study/TableOfContents";
 import { ArchitectureDiagram } from "@/components/case-study/ArchitectureDiagram";
 import { AuthFlowDiagram } from "@/components/case-study/AuthFlowDiagram";
