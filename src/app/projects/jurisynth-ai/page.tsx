@@ -666,7 +666,7 @@ function JurisynthDecisionTable() {
 // ─── Sticky Table of Contents ─────────────────────────────────────────────────
 // Self-contained client component — reads jurisynth sections directly.
 
-import { JurisynthTOCClient } from "@/components/case-study/jurisynth/JurisynthTOC";
+import { JurisynthTOCClient } from "@/components/case-study/jurisynth/JurisynthTOCClient";
 
 function JurisynthTOC() {
   return <JurisynthTOCClient sections={sections} />;
