@@ -13,8 +13,8 @@ export const contactMethods: readonly ContactMethod[] = [
   {
     id: "email",
     label: "Email",
-    value: "pranitapanchal.dev@gmail.com",
-    href: "mailto:pranitapanchal.dev@gmail.com",
+    value: "pranitapanchal339@gmail.com",
+    href: "mailto:pranitapanchal339@gmail.com",
     description: "Best for detailed project discussions and opportunities",
     external: false,
   },

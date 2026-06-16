@@ -158,7 +158,7 @@ export const contactData = {
   heading: "Let's build something.",
   description:
     "Open to backend, full-stack, platform, and DevOps roles. Based in Pune, Maharashtra, India — available for remote and hybrid positions.",
-  email: "pranitapanchal.dev@gmail.com",
+  email: "pranitapanchal339@gmail.com",
   links: [
     { label: "GitHub", href: "https://github.com/pranitap123" },
     {

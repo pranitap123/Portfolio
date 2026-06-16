@@ -472,7 +472,7 @@ function ContactForm() {
                         href="mailto:pranitapanchal339@gmail.com"
                         className="text-[#C5A880]/70 underline underline-offset-2 hover:text-[#C5A880] transition-colors"
                       >
-                        pranitapanchal.dev@gmail.com
+                        pranitapanchal339@gmail.com
                       </a>
                     </p>
                   </div>
