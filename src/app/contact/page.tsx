@@ -469,7 +469,7 @@ function ContactForm() {
                     <p className="text-xs text-white/38">
                       Something went wrong. Please try emailing directly at{" "}
                       <a
-                        href="mailto:pranitapanchal.dev@gmail.com"
+                        href="mailto:pranitapanchal339@gmail.com"
                         className="text-[#C5A880]/70 underline underline-offset-2 hover:text-[#C5A880] transition-colors"
                       >
                         pranitapanchal.dev@gmail.com
