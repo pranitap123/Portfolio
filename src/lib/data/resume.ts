@@ -9,7 +9,7 @@ export const hero = {
     "Production-grade software engineer focused on building secure backend systems, scalable data pipelines, and AI-integrated applications. I design with observability from the first commit and deploy with reproducibility as a constraint.",
   resumePdfUrl: "/resume/pranita-panchal-resume.pdf",
   location: "Pune, Maharashtra, India",
-  email: "pranitapanchal.dev@gmail.com",
+  email: "pranitapanchal.339@gmail.com",
   github: "https://github.com/pranitap123",
   linkedin: "https://www.linkedin.com/in/pranita-panchal-5b9b3b281",
 } as const;
@@ -31,22 +31,36 @@ export interface EducationEntry {
   institution: string;
   period: string;
   location: string;
+  grade?: string;
   highlights: readonly string[];
   current: boolean;
 }
 
 export const education: readonly EducationEntry[] = [
-  {
+   {
     degree: "Bachelor of Technology — Computer Science & Engineering",
-    institution: "Savitribai Phule Pune University",
-    period: "2021 — 2025",
+    institution: "PCET's Nutan College of Engineering and Research, Pune",
+    period: "2023 — 2026",
     location: "Pune, Maharashtra, India",
+    grade: "CGPA: 8.24 / 10 (up to Semester VII)",
     highlights: [
-      "Core curriculum: Data Structures, Algorithms, Operating Systems, Computer Networks, DBMS",
+      "Core curriculum: Data Structures, Algorithms, Operating Systems, Computer Networks, Database Management Systems",
       "Relevant coursework: Distributed Computing, Cryptography, Compiler Design",
-      "Final year project: AI-integrated legal research platform (Jurisynth AI) — deployed to production",
+      "Capstone project: Jurisynth AI — AI-powered legal research platform with RAG and multi-agent orchestration",
     ],
     current: true,
+  },
+  {
+    degree: "Diploma — Computer Science and Engineering",
+    institution: "D. Y. Patil College of Engineering (DYPCOE), Akurdi, Pune",
+    period: "2020 — 2023",
+    location: "Pune, Maharashtra, India",
+    grade: "Percentage: 84.46%",
+    highlights: [
+      "Built a strong foundation in programming, algorithms, databases, and software engineering.",
+      "Completed diploma with distinction while developing practical skills in application development and computer science fundamentals.",
+    ],
+    current: false,
   },
 ] as const;
 
