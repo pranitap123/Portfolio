@@ -143,7 +143,7 @@ export const featuredProjects: readonly FeaturedProject[] = [
       "Event-driven threat detection system with Kafka for high-throughput ingestion, Neo4j for threat actor graph modeling, FastAPI for the async intelligence query layer, and a React dashboard for live graph visualization.",
     tech: ["FastAPI", "Python", "Kafka", "Neo4j", "PostgreSQL", "Docker", "React"],
     github: "https://github.com/pranitap123/ARGUS---PRISM",
-    live: null,
+    live: "argus-prism.vercel.app/",
     caseStudyHref: "/projects/argus-prism",
     status: "Open Source",
     highlight: "Decoupled ingestion and analysis — Kafka ensures pipeline continues under detection lag",
@@ -173,57 +173,40 @@ export interface CertItem {
   url?: string;
 }
 
-export const certifications: readonly CertItem[] = [
+export const certifications: readonly CertItem[] = [ 
   {
-    title: "The Web Developer Bootcamp",
-    issuer: "Udemy / Colt Steele",
-    year: "2022",
-    category: "Course",
-  },
+     title: "100xDevs Cohort 3 – Web Development, DevOps & Blockchain",
+      issuer: "100xDevs", 
+      year: "2024", 
+      category: "Certification", 
+      url: "https://generateinvoice.teachx.in/generatecertificate/certificate/harkirat_db/72409/41686/14",
+     },
+      {
+         title: "The Complete Full-Stack Web Development Bootcamp", 
+         issuer: "Udemy", 
+         year: "2025", 
+         category: "Certification",
+         },
+          {
+             title: "Java Programming Certification",
+              issuer: "ISO Certified Program",
+               year: "2023",
+                category: "Certification",
+               },
+                {
+                   title: "Advanced Java Programming Certification",
+                    issuer: "ISO Certified Program", 
+                    year: "2023",
+                     category: "Certification",
+                      },
   {
-    title: "Complete Node.js Developer",
-    issuer: "Udemy / Andrew Mead",
-    year: "2022",
-    category: "Course",
-  },
-  {
-    title: "Docker & Kubernetes: The Practical Guide",
-    issuer: "Udemy / Maximilian Schwarzmüller",
-    year: "2023",
-    category: "Course",
-  },
-  {
-    title: "Ethereum and Solidity: The Complete Developer's Guide",
-    issuer: "Udemy / Stephen Grider",
-    year: "2023",
-    category: "Course",
-  },
-  {
-    title: "System Design Engineering (Self-Maintained Repository)",
-    issuer: "github.com/pranitap123/system-design-engineering",
-    year: "2024–present",
+    title: "Rust Programming & Backend Development",
+    issuer: "Self-Study",
+    year: "Present",
     category: "Self-Study",
-    url: "https://github.com/pranitap123/system-design-engineering",
-  },
-  {
-    title: "LLM Engineering: Master AI & LLMs",
-    issuer: "Udemy",
-    year: "2024",
-    category: "Course",
-  },
-  {
-    title: "Rust Programming: The Complete Developer's Guide",
-    issuer: "Udemy",
-    year: "2025",
-    category: "Course",
-  },
-  {
-    title: "Kubernetes: Zero to Production",
-    issuer: "Self-Study (in progress)",
-    year: "2025",
-    category: "Self-Study",
-  },
-] as const;
+
+ },
+ ] as const;
 
 // ─── Experience ───────────────────────────────────────────────────────────────
 
