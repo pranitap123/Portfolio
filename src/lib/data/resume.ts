@@ -204,7 +204,6 @@ export const certifications: readonly CertItem[] = [
     issuer: "Self-Study",
     year: "Present",
     category: "Self-Study",
-
  },
  ] as const;
 
