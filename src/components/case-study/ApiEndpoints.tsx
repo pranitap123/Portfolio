@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { useRef } from "react";
-import { apiEndpoints } from "@/lib/data/securevault";
 
 const METHOD_COLORS: Record<string, { text: string; border: string; bg: string }> = {
   GET:    { text: "text-emerald-400",  border: "border-emerald-400/20", bg: "bg-emerald-400/[0.06]" },
@@ -12,7 +11,20 @@ const METHOD_COLORS: Record<string, { text: string; border: string; bg: string }
   DELETE: { text: "text-red-400",      border: "border-red-400/20",     bg: "bg-red-400/[0.06]" },
 };
 
-export function ApiEndpoints() {
+interface ApiEndpoint {
+  method: string;
+  path: string;
+  description: string;
+  auth: boolean;
+  request?: string;
+  response?: string;
+}
+
+interface ApiEndpointsProps {
+  endpoints: readonly ApiEndpoint[];
+}
+
+export function ApiEndpoints({ endpoints }: ApiEndpointsProps)  {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-40px" });
   const [expanded, setExpanded] = useState<number | null>(0);
@@ -25,7 +37,7 @@ export function ApiEndpoints() {
 
       {/* Endpoint list */}
       <div className="space-y-2">
-        {apiEndpoints.map((ep, i) => {
+        {endpoints.map((ep, i) => {
           const colors = METHOD_COLORS[ep.method] || METHOD_COLORS.GET;
           const isOpen = expanded === i;
 
