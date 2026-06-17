@@ -2,9 +2,19 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { engineeringDecisions } from "@/lib/data/securevault";
 
-export function DecisionTable() {
+interface Decision {
+  decision: string;
+  chosen: string;
+  alternative: string;
+  reason: string;
+}
+
+interface DecisionTableProps {
+  decisions: readonly Decision[];
+}
+
+export function DecisionTable({ decisions }: DecisionTableProps) {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-40px" });
 
@@ -27,7 +37,7 @@ export function DecisionTable() {
             </tr>
           </thead>
           <tbody>
-            {engineeringDecisions.map((row, i) => (
+            {decisions.map((row, i) => (
               <motion.tr
                 key={row.decision}
                 initial={{ opacity: 0, y: 8 }}
