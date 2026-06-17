@@ -12,7 +12,7 @@ export interface ProjectMetric {
 
 export interface Project {
   slug: string;
-  index: string;           // "01" | "02" | "03"
+  index: string;
   name: string;
   tagline: string;
   description: string;
@@ -24,7 +24,7 @@ export interface Project {
   github: string;
   live: string | null;
   caseStudyHref: string;
-  diagramType: "securevault" | "argus" | "jurisynth";
+  diagramType: "securevault" | "argus" | "jurisynth" | "portfolio";
 }
 
 // ─── Projects ─────────────────────────────────────────────────────────────────
@@ -41,16 +41,16 @@ export const projects: readonly Project[] = [
     status: "Open Source",
     tech: ["TypeScript", "Node.js", "PostgreSQL", "Prisma", "Docker", "JWT", "AES-256"],
     highlights: [
-      { label: "Encryption",    detail: "AES-256-GCM authenticated encryption at the persistence boundary" },
-      { label: "Auth",          detail: "JWT + refresh token rotation with single-use invalidation" },
-      { label: "Access Control",detail: "Role-based permissions enforced at middleware, before handlers" },
-      { label: "Deployment",    detail: "Multi-stage Dockerfile with health checks and Compose orchestration" },
+      { label: "Encryption",     detail: "AES-256-GCM authenticated encryption at the persistence boundary" },
+      { label: "Auth",           detail: "JWT + refresh token rotation with single-use invalidation" },
+      { label: "Access Control", detail: "Role-based permissions enforced at middleware, before handlers" },
+      { label: "Deployment",     detail: "Multi-stage Dockerfile with health checks and Compose orchestration" },
     ],
     metrics: [
-      { label: "Encryption",  value: "AES-256-GCM" },
-      { label: "Auth",        value: "JWT + Refresh" },
-      { label: "Database",    value: "PostgreSQL" },
-      { label: "Pattern",     value: "REST / Layered" },
+      { label: "Encryption", value: "AES-256-GCM"   },
+      { label: "Auth",       value: "JWT + Refresh"  },
+      { label: "Database",   value: "PostgreSQL"     },
+      { label: "Pattern",    value: "REST / Layered" },
     ],
     github: "https://github.com/pranitap123/securevault-backend",
     live: null,
@@ -68,15 +68,15 @@ export const projects: readonly Project[] = [
     status: "Open Source",
     tech: ["FastAPI", "Python", "Kafka", "Neo4j", "PostgreSQL", "Docker", "React"],
     highlights: [
-      { label: "Event Pipeline", detail: "Kafka consumer groups with at-least-once delivery and dead-letter queue" },
-      { label: "Graph Intelligence", detail: "Neo4j models threat actor → infrastructure → target relationships natively" },
-      { label: "Stream Processing",  detail: "Decoupled ingestion and analysis — pipeline survives detection lag spikes" },
-      { label: "Dual Database",      detail: "Neo4j for graph traversal, PostgreSQL for time-series event queries" },
+      { label: "Event Pipeline",      detail: "Kafka consumer groups with at-least-once delivery and dead-letter queue" },
+      { label: "Graph Intelligence",  detail: "Neo4j models threat actor → infrastructure → target relationships natively" },
+      { label: "Stream Processing",   detail: "Decoupled ingestion and analysis — pipeline survives detection lag spikes" },
+      { label: "Dual Database",       detail: "Neo4j for graph traversal, PostgreSQL for time-series event queries" },
     ],
     metrics: [
-      { label: "Architecture", value: "Event-Driven" },
-      { label: "Broker",       value: "Apache Kafka" },
-      { label: "Graph DB",     value: "Neo4j" },
+      { label: "Architecture", value: "Event-Driven"  },
+      { label: "Broker",       value: "Apache Kafka"  },
+      { label: "Graph DB",     value: "Neo4j"         },
       { label: "API",          value: "FastAPI Async" },
     ],
     github: "https://github.com/pranitap123/ARGUS---PRISM",
@@ -101,23 +101,74 @@ export const projects: readonly Project[] = [
       { label: "Production",      detail: "Deployed and live at jurisynth.in with full auth and session management" },
     ],
     metrics: [
-      { label: "Architecture",    value: "RAG Pipeline" },
-      { label: "Faithfulness",    value: "93%" },
-      { label: "Citation P",      value: "91%" },
-      { label: "Deployment",      value: "Live" },
+      { label: "Architecture", value: "RAG Pipeline" },
+      { label: "Faithfulness", value: "93%"          },
+      { label: "Citation P",   value: "91%"          },
+      { label: "Deployment",   value: "Live"         },
     ],
     github: "https://github.com/pranitap123/Jurisynth-AI",
     live: "https://jurisynth.in",
     caseStudyHref: "/projects/jurisynth-ai",
     diagramType: "jurisynth",
   },
+  {
+    slug: "developer-portfolio",
+    index: "04",
+    name: "Developer Portfolio",
+    tagline: "Engineering portfolio built as a production-grade Next.js application",
+    description:
+      "A multi-page engineering portfolio designed and built from scratch as a production software system — not a template. Covers full-stack Next.js 15 with App Router, reusable component architecture, per-page metadata and Open Graph, responsive mobile navigation with focus trapping, accessible SVG diagrams, and automated sitemap generation. The codebase demonstrates the same engineering standards applied to backend systems: typed data contracts, shared component primitives, and zero-placeholder content.",
+    category: "Frontend Engineering · Product Design",
+    status: "Live",
+    tech: [
+      "Next.js 15",
+      "TypeScript",
+      "React",
+      "Tailwind CSS v4",
+      "Framer Motion",
+      "App Router",
+      "Metadata API",
+    ],
+    highlights: [
+      {
+        label: "Architecture",
+        detail:
+          "App Router with per-route Server Components — client boundaries isolated to animated islands only",
+      },
+      {
+        label: "Design System",
+        detail:
+          "Single shared token set (gold accent, type scale, spacing) enforced across 9 pages and 40+ components",
+      },
+      {
+        label: "SEO",
+        detail:
+          "Per-page Open Graph metadata, dynamic sitemap.ts, robots.ts, and canonical URLs via Next.js Metadata API",
+      },
+      {
+        label: "Accessibility",
+        detail:
+          "Skip links, aria-current routing, focus-trapped mobile menu, keyboard-navigable FAQ accordion, aria-hidden decorative SVGs",
+      },
+    ],
+    metrics: [
+      { label: "Pages",      value: "9 Routes"    },
+      { label: "Framework",  value: "Next.js 15"  },
+      { label: "Language",   value: "TypeScript"  },
+      { label: "Deployment", value: "Live"        },
+    ],
+    github: "https://github.com/pranitap123/Portfolio",
+    live: "https://pranitapanchal.dev",
+    caseStudyHref: "/",
+    diagramType: "portfolio",
+  },
 ] as const;
 
 // ─── Page-level stats (hero section) ─────────────────────────────────────────
 
 export const pageStats = [
-  { value: "3",    label: "Production Systems"    },
-  { value: "15+",  label: "Technologies"          },
-  { value: "1",    label: "Live Deployment"       },
-  { value: "3",    label: "Architecture Domains"  },
+  { value: "4",   label: "Projects"           },
+  { value: "18+", label: "Technologies"       },
+  { value: "2",   label: "Live Deployments"   },
+  { value: "4",   label: "Engineering Domains"},
 ] as const;
