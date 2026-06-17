@@ -16,8 +16,8 @@ interface ApiEndpoint {
   path: string;
   description: string;
   auth: boolean;
-  request?: string;
-  response?: string;
+   request?: string | null;
+  response?: string | null;
 }
 
 interface ApiEndpointsProps {
