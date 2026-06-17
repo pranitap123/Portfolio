@@ -363,6 +363,7 @@ function ProjectDiagram({
 }) {
   if (type === "securevault") return <SecureVaultDiagram hovered={hovered} />;
   if (type === "argus")       return <ArgusDiagram hovered={hovered} />;
+  if (type === "portfolio")   return <PortfolioDiagram hovered={hovered} />;
   return                             <JurisynthDiagram hovered={hovered} />;
 }
 
@@ -567,6 +568,71 @@ function JurisynthDiagram({ hovered }: { hovered: boolean }) {
 
       <text x="170" y="148" textAnchor="middle" fill="rgba(255,255,255,0.12)" fontSize="8" fontFamily="monospace">
         RAG pipeline · citation-grounded generation · 93% faithfulness
+      </text>
+    </svg>
+  );
+}
+
+/** Portfolio: Browser → Next.js → RSC | Client → Data → SEO */
+function PortfolioDiagram({ hovered }: { hovered: boolean }) {
+  // Two rows: top = request path, bottom = data / SEO layer
+  const topNodes = [
+    { x: 0,   label: "Browser",   sub: "visitor"   },
+    { x: 72,  label: "Next.js",   sub: "App Router", accent: true },
+    { x: 154, label: "RSC",       sub: "server"    },
+    { x: 224, label: "Client",    sub: "island"    },
+    { x: 296, label: "UI",        sub: "rendered"  },
+  ];
+  const bottomNodes = [
+    { x: 72,  label: "Metadata",  sub: "API + OG", accent: true },
+    { x: 164, label: "Sitemap",   sub: "dynamic"  },
+    { x: 250, label: "robots.ts", sub: "crawl"    },
+  ];
+
+  return (
+    <svg viewBox="0 0 340 170" width="100%" height="auto" aria-hidden="true">
+      {/* Animated request packet */}
+      <AnimatePresence>
+        {hovered && (
+          <motion.circle
+            r="3" fill="#C5A880" opacity={0.85}
+            animate={{ x: [8, 80, 162, 232, 308], y: [57, 57, 57, 57, 57] }}
+            transition={{ duration: 1.6, ease: "easeInOut", repeat: Infinity, repeatDelay: 1 }}
+            exit={{ opacity: 0 }}
+          />
+        )}
+      </AnimatePresence>
+
+      {/* Top row edges */}
+      <Edge x1={44}  y1={57} x2={72}  y2={57} hovered={hovered} delay={0}    gold />
+      <Edge x1={116} y1={57} x2={154} y2={57} hovered={hovered} delay={0.06} />
+      <Edge x1={196} y1={57} x2={224} y2={57} hovered={hovered} delay={0.1}  />
+      <Edge x1={268} y1={57} x2={296} y2={57} hovered={hovered} delay={0.14} />
+
+      {/* Top row nodes */}
+      {topNodes.map((n) => (
+        <Node key={n.label} x={n.x} y={43} w={64} h={28} label={n.label} sub={n.sub} accent={n.accent} />
+      ))}
+
+      {/* Vertical drop from Next.js to SEO layer */}
+      <motion.line
+        x1={104} y1={71} x2={104} y2={100}
+        stroke="rgba(197,168,128,0.2)" strokeWidth="1" strokeDasharray="3 3"
+        animate={{ opacity: hovered ? 1 : 0.3 }}
+        transition={{ duration: 0.3 }}
+      />
+
+      {/* Bottom row — SEO/data */}
+      <Edge x1={140} y1={114} x2={164} y2={114} hovered={hovered} delay={0.18} />
+      <Edge x1={228} y1={114} x2={250} y2={114} hovered={hovered} delay={0.22} />
+
+      {bottomNodes.map((n) => (
+        <Node key={n.label} x={n.x} y={100} w={64} h={28} label={n.label} sub={n.sub} accent={n.accent} />
+      ))}
+
+      {/* Label */}
+      <text x="170" y="150" textAnchor="middle" fill="rgba(255,255,255,0.12)" fontSize="8" fontFamily="monospace">
+        App Router · server components · metadata API · sitemap
       </text>
     </svg>
   );
