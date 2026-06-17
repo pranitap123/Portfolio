@@ -209,35 +209,96 @@ export const certifications: readonly CertItem[] = [
 
 // ─── Experience ───────────────────────────────────────────────────────────────
 
+export interface ProjectContribution {
+  name: string;
+  role: string;
+  period: string;
+  summary: string;
+  contributions: readonly string[];
+  tech: readonly string[];
+  links: { github: string; live?: string };
+}
+ 
+export const engineeringContributions: readonly ProjectContribution[] = [
+  {
+    name: "Jurisynth AI",
+    role: "Sole Designer & Engineer",
+    period: "2024 — Present",
+    summary:
+      "Designed, built, and deployed an AI-assisted legal research platform from scratch. Independently responsible for system architecture, backend implementation, AI pipeline engineering, and production deployment.",
+    contributions: [
+      "Architected a six-stage RAG pipeline with bi-encoder retrieval and cross-encoder re-ranking, achieving 93% answer faithfulness on a held-out test set",
+      "Implemented a multi-agent orchestration layer (Router, Research, Reasoning, Citation, Synthesis) for complex multi-hop legal queries",
+      "Built a citation attribution engine that maps every generated claim to its exact source span — unsupported claims are flagged, not silently served",
+      "Deployed and currently operating at jurisynth.in with JWT authentication, session management, and MongoDB document storage",
+    ],
+    tech: ["Node.js", "Express", "MongoDB", "React", "JWT", "RAG", "Vector Search", "Docker"],
+    links: { github: "https://github.com/pranitap123/Jurisynth-AI", live: "https://jurisynth.in" },
+  },
+  {
+    name: "SecureVault Backend",
+    role: "Sole Designer & Engineer",
+    period: "2023",
+    summary:
+      "Designed and implemented a secrets management API with a defence-in-depth security model, typed throughout, containerised, and documented with explicit architecture decisions.",
+    contributions: [
+      "Implemented AES-256-GCM encryption at the service layer — the database never receives plaintext regardless of handler logic",
+      "Built JWT authentication with refresh token rotation: access tokens expire in 15 minutes; refresh tokens are single-use and rotated on each use",
+      "Designed a PostgreSQL schema with UUID primary keys (prevents ID enumeration), foreign key constraints, and composite indexes for the primary query pattern",
+      "Containerised with a multi-stage Dockerfile reducing image surface area; Docker Compose with healthcheck-gated startup ordering",
+    ],
+    tech: ["TypeScript", "Node.js", "PostgreSQL", "Prisma", "Docker", "JWT", "AES-256", "Zod"],
+    links: { github: "https://github.com/pranitap123/securevault-backend" },
+  },
+  {
+    name: "ARGUS-PRISM",
+    role: "Sole Designer & Engineer",
+    period: "2024",
+    summary:
+      "Designed and implemented an event-driven threat intelligence platform combining stream processing, graph database modeling, and an async API layer.",
+    contributions: [
+      "Implemented a Kafka consumer pipeline with dead-letter queue handling, at-least-once delivery semantics, and MERGE-based Neo4j writes for idempotency",
+      "Modeled threat actor relationships as a native Neo4j graph — CONTROLS, USES, TARGETS, RESOLVES_TO relationships queryable with multi-hop Cypher traversals",
+      "Built a FastAPI intelligence query layer with async handlers, Pydantic v2 validation, and automatic OpenAPI documentation generation",
+      "Orchestrated seven services (API, consumer, Kafka, ZooKeeper, Neo4j, PostgreSQL, React) via Docker Compose with healthcheck-gated startup dependencies",
+    ],
+    tech: ["FastAPI", "Python", "Kafka", "Neo4j", "PostgreSQL", "Docker", "React", "Pydantic"],
+    links: { github: "https://github.com/pranitap123/ARGUS---PRISM" },
+  },
+] as const;
+ 
+// Keep `experience` export for backward compatibility with page.tsx
+// that may still import it. Map to the new structure.
 export interface ExperienceEntry {
   title: string;
   company: string;
-  type: "Internship" | "Freelance" | "Part-time" | "Contract";
+  type: "Internship" | "Freelance" | "Part-time" | "Contract" | "Independent";
   period: string;
   location: string;
   description: string;
   contributions: readonly string[];
   tech: readonly string[];
 }
-
+ 
 export const experience: readonly ExperienceEntry[] = [
   {
-    title: "Full-Stack Developer",
-    company: "Freelance",
-    type: "Freelance",
+    title: "Independent Software Engineer",
+    company: "Self-Directed Projects",
+    type: "Independent",
     period: "2023 — Present",
-    location: "Remote",
+    location: "Pune, India (Remote)",
     description:
-      "Designed and delivered backend-focused web applications for clients requiring custom API development, database design, and deployment automation.",
+      "Designed, built, and deployed three backend-focused engineering projects independently — from architecture decisions through production deployment. Each project is open source and documented with explicit technical rationale.",
     contributions: [
-      "Architected and deployed Jurisynth AI — a production RAG platform now live at jurisynth.in",
-      "Built custom REST APIs with Node.js and Express for client CMS and e-commerce integrations",
-      "Implemented JWT-based authentication systems with role-based access control",
-      "Containerised multi-service stacks with Docker Compose and configured Nginx reverse proxies",
+      "Deployed Jurisynth AI to production (jurisynth.in) — a RAG-powered legal research platform with multi-agent orchestration and citation attribution",
+      "Built SecureVault: an encrypted secrets management API with AES-256-GCM, JWT rotation, RBAC, and Dockerised deployment",
+      "Built ARGUS-PRISM: a Kafka + Neo4j threat intelligence platform with event-driven stream processing and an async FastAPI query layer",
+      "Maintained a public system design repository documenting distributed systems patterns, architecture decisions, and infrastructure practices",
     ],
-    tech: ["Node.js", "Express", "MongoDB", "React", "Docker", "Next.js", "PostgreSQL"],
+    tech: ["TypeScript", "Python", "Node.js", "FastAPI", "PostgreSQL", "MongoDB", "Neo4j", "Kafka", "Docker", "React"],
   },
 ] as const;
+ 
 
 // ─── Current Focus ────────────────────────────────────────────────────────────
 
