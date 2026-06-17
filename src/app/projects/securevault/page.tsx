@@ -16,6 +16,8 @@ import {
   lessonsLearned,
   futureImprovements,
   sections,
+  apiEndpoints,
+  engineeringDecisions,
 } from "@/lib/data/securevault";
 
 export const metadata: Metadata = {
@@ -106,7 +108,7 @@ export default function SecureVaultPage() {
 
               {/* ── Section 6: API ───────────────────────────────────── */}
               <SectionBlock id="api" label="06 — Interface" heading="API Design">
-                <ApiEndpoints />
+                <ApiEndpoints endpoints={apiEndpoints} />
               </SectionBlock>
 
               {/* ── Section 7: Containers ───────────────────────────── */}
@@ -116,7 +118,7 @@ export default function SecureVaultPage() {
 
               {/* ── Section 8: Decisions ────────────────────────────── */}
               <SectionBlock id="decisions" label="08 — Rationale" heading="Engineering Decisions">
-                <DecisionTable />
+                <DecisionTable decisions={engineeringDecisions} />
               </SectionBlock>
 
               {/* ── Section 9: Challenges ───────────────────────────── */}
