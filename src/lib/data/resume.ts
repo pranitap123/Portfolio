@@ -9,7 +9,7 @@ export const hero = {
     "Production-grade software engineer focused on building secure backend systems, scalable data pipelines, and AI-integrated applications. I design with observability from the first commit and deploy with reproducibility as a constraint.",
   resumePdfUrl: "/resume/Pranita_Panchal_Resume.pdf",
   location: "Pune, Maharashtra, India",
-  email: "pranitapanchal.339@gmail.com",
+  email: "pranitapanchal339@gmail.com",
   github: "https://github.com/pranitap123",
   linkedin: "https://www.linkedin.com/in/pranita-panchal-5b9b3b281",
 } as const;
