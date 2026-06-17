@@ -149,7 +149,7 @@ export default function ArgusPrismPage() {
                 <DecisionTable decisions={engineeringDecisions} />
               </SectionBlock>
 
-              {/* ── 09 Challenges ───────────────────────────────────── */}
+              {/* Challenges */}
               <SectionBlock id="challenges" label="09 — Complexity" heading="Challenges Faced">
                 <Prose>
                   Distributed systems surface a class of problems that single-process architectures never encounter. These are the genuinely hard parts of building ARGUS-PRISM.
