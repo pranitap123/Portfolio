@@ -29,7 +29,7 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    slug: "securevault-backend",
+    slug: "securevault",
     name: "SecureVault",
     subtitle: "Encrypted secrets management backend",
     description:

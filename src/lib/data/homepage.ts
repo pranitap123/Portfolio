@@ -52,7 +52,7 @@ export const projectsData = {
   heading: "Featured Projects",
   items: [
     {
-      slug: "securevault-backend",
+      slug: "securevault",
       name: "SecureVault",
       subtitle: "Encrypted secrets management backend",
       description:
