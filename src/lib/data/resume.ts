@@ -7,7 +7,7 @@ export const hero = {
     "Backend engineering · Distributed systems · AI-integrated applications · DevOps · Web3",
   summary:
     "Production-grade software engineer focused on building secure backend systems, scalable data pipelines, and AI-integrated applications. I design with observability from the first commit and deploy with reproducibility as a constraint.",
-  resumePdfUrl: "/resume/pranita-panchal-resume.pdf",
+  resumePdfUrl: "/resume/Pranita_Panchal_Resume.pdf",
   location: "Pune, Maharashtra, India",
   email: "pranitapanchal.339@gmail.com",
   github: "https://github.com/pranitap123",
