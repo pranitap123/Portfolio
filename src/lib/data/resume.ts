@@ -18,9 +18,9 @@ export const hero = {
 
 export const professionalSummary = {
   paragraphs: [
-    "I build production-grade backend systems — REST APIs with strong typing, PostgreSQL schemas designed for longevity, and containerised deployments that behave identically in development and production. My work spans secure credential management, event-driven threat intelligence platforms, and AI-powered SaaS applications shipped to production.",
-    "I approach every system with the same question: what happens when this fails at 2am with no one watching? That question drives decisions around observability, graceful degradation, and operational automation. Security is a first-class constraint, not a retrofit.",
-    "My current interests sit at the intersection of distributed systems theory and applied AI: RAG pipeline engineering, multi-agent orchestration, and the backend infrastructure required to make AI applications reliable in production.",
+     "I build backend systems designed for operational reality — REST APIs with strong typing, PostgreSQL schemas with migration history, and containerised deployments that behave identically in development and in production. My portfolio spans encrypted secrets management, Kafka-powered threat intelligence, and an AI-assisted legal research platform shipped to production.",
+    "My engineering decisions start with failure modes. Every external call is a risk surface; every shared component is a coupling point. Security, observability, and graceful degradation are requirements I model from the first schema design — not concerns addressed before a deadline.",
+    "I am currently focused on the intersection of distributed systems theory and applied AI: retrieval-augmented generation, multi-agent orchestration, and the backend infrastructure required to make language model applications reliable at scale.",
   ],
 } as const;
 
