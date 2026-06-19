@@ -34,6 +34,7 @@ This portfolio is not a static template; it is designed as an interactive produc
 |                       EXTERNAL DATA                       |
 |         system-design-engineering Repo (Upstream)         |
 +-----------------------------------------------------------+
+```
 
 ## 🛠️ Core Technology Stack
 
