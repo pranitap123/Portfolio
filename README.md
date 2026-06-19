@@ -12,28 +12,28 @@
 This portfolio is not a static template; it is designed as an interactive product platform to demonstrate full-stack engineering capability, systems documentation, and infrastructure topology.
 
 ```text
-        ┌────────────────────────────────────────────────────────┐
-        │                 EDGE / USER INTERACTION                │
-        │       Next.js App Router  │  TailwindCSS Grid          │
-        └───────────────┬────────────────────────┬───────────────┘
-                        │                        │
-                        ▼                        ▼
-        ┌─────────────────────────────┐  ┌─────────────────────────────┐
-        │       OMNIPRESENT Core      │  │      THREE.JS PLATFORM      │
-        │  Ctrl+K Command Palette AI  │  │ Interactive Network Topology│
-        └───────────────┬─────────────┘  └─────────────────────────────┘
-                        │
-                        ▼
-        ┌────────────────────────────────────────────────────────┐
-        │                     CONTENT LAYER                      │
-        │     Unified Content Sync (MDX + Mermaid Parsing)       │
-        └───────────────────────┬────────────────────────────────┘
-                                │
-                                ▼
-        ┌────────────────────────────────────────────────────────┐
-        │                     EXTERNAL DATA                      │
-        │    system-design-engineering Repo (Upstream Source)   │
-        └────────────────────────────────────────────────────────┘
++-----------------------------------------------------------+
+|                  EDGE / USER INTERACTION                  |
+|         Next.js App Router  |  TailwindCSS Grid           |
++---------------------+---------------------+---------------+
+                      |                     |
+                      v                     v
+        +---------------------------+ +---------------------------+
+        |     OMNIPRESENT CORE      | |     THREE.JS PLATFORM     |
+        | Ctrl+K Command Palette AI | | Interactive Topology      |
+        +-------------+-------------+ +---------------------------+
+                      |
+                      v
++-----------------------------------------------------------+
+|                       CONTENT LAYER                       |
+|       Unified Content Sync (MDX + Mermaid Parsing)        |
++-----------------------------+-----------------------------+
+                              |
+                              v
++-----------------------------------------------------------+
+|                       EXTERNAL DATA                       |
+|         system-design-engineering Repo (Upstream)         |
++-----------------------------------------------------------+
 
 ## 🛠️ Core Technology Stack
 
